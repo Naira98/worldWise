@@ -2,8 +2,10 @@ import { CircularProgress } from "@mui/material";
 import styles from "./styles/CountryList.module.css";
 import CountryItem from "./CountryItem";
 import Message from "./Message";
+import { useCities } from "../contexts/CitiesContext";
 
-const CountryList = ({ cities, isLoading }) => {
+const CountryList = () => {
+  const { cities, isLoading } = useCities();
   if (isLoading) return <CircularProgress color="inherit" />;
   if (!cities.length)
     return (
@@ -19,7 +21,7 @@ const CountryList = ({ cities, isLoading }) => {
   return (
     <ul className={styles.countryList}>
       {countries.map((country) => (
-        <CountryItem country={country} key={country.country}/>
+        <CountryItem country={country} key={country.country} />
       ))}
     </ul>
   );
