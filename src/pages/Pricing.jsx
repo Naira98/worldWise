@@ -1,4 +1,3 @@
-import React from "react";
 import HomeNav from "../components/HomeNav";
 import styles from "./styles/Product.module.css";
 

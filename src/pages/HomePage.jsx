@@ -1,7 +1,6 @@
-import React from "react";
 import styles from "./styles/HomePage.module.css";
 import { Link } from "react-router-dom";
-import HomeNav from '../components/HomeNav'
+import HomeNav from "../components/HomeNav";
 
 const HomePage = () => {
   return (
@@ -19,8 +18,10 @@ const HomePage = () => {
             of. Never forget your wonderful experiences, and show your friends
             how you have wandered the world.
           </h2>
-          <Link to='/login' className="cta">Start tracking now</Link>
-        </section> 
+          <Link to="/login" className="cta">
+            Start tracking now
+          </Link>
+        </section>
       </main>
     </>
   );

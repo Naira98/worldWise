@@ -1,4 +1,3 @@
-import React from "react";
 import Logo from "./Logo";
 import AppNav from "./AppNav";
 import styles from "./styles/Sidebar.module.css";

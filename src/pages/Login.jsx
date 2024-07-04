@@ -17,8 +17,8 @@ const Login = () => {
   };
 
   useEffect(() => {
-    if (isAuth) return navigate("/app", {replace: true});
-  }, [isAuth]);
+    if (isAuth) return navigate("/app", { replace: true });
+  }, [isAuth, navigate]);
 
   return (
     <main className={styles.login}>

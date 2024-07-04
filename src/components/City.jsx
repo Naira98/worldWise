@@ -19,7 +19,7 @@ const City = () => {
 
   useEffect(() => {
     getCity(id);
-  }, [id]);
+  }, [getCity, id]);
 
   const { cityName, emoji, date, notes } = currentCity;
   if (isLoading) return <CircularProgress color="inherit" />;
