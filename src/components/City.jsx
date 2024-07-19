@@ -1,8 +1,10 @@
 import { useParams } from "react-router-dom";
-import { useCities } from "../contexts/CitiesContext";
 import { useEffect } from "react";
-import styles from "./styles/City.module.css";
 import { CircularProgress } from "@mui/material";
+
+import styles from "./styles/City.module.css";
+
+import { useCities } from "../contexts/CitiesContext";
 import BackButton from "./BackButton";
 
 const formatDate = (date) =>
