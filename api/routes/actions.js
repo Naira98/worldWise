@@ -32,7 +32,7 @@ router.post("/cities", verify, async (req, res) => {
       ...newCity,
       userId: new ObjectId(req.user.userId),
     });
-    return res.status(200).json({ ...newCity, cityId: addedCity.insertedId });
+    return res.status(200).json({ ...newCity, _id: addedCity.insertedId });
   } catch (err) {
     res.status(401).json(err.message);
   }

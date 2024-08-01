@@ -4,6 +4,7 @@ import {
   useContext,
   useEffect,
   useReducer,
+  useState,
 } from "react";
 import {
   handleAddCity,
@@ -76,9 +77,14 @@ const CitiesProvider = ({ children }) => {
     reducer,
     intialState
   );
+  const [value, setValue] = useState(0);
   // const [cities, setCities] = useState([]);
   // const [isLoading, setIsLoading] = useState(false);
   // const [currentCity, setCurrentCity] = useState({});
+
+  const forceRefetch = () => {
+    setValue((x) => x + 1);
+  };
 
   useEffect(() => {
     const fetchCities = async () => {
@@ -95,8 +101,8 @@ const CitiesProvider = ({ children }) => {
       }
     };
     fetchCities();
-  }, []);
-  
+  }, [value]);
+
   const getCity = useCallback(
     async (id) => {
       if (id === currentCity.id) return;
@@ -132,7 +138,8 @@ const CitiesProvider = ({ children }) => {
       dispatch({ type: "loading" });
       await handleDeleteCity(id);
       dispatch({ type: "city/deleted", payload: id });
-      location.reload();
+      forceRefetch()
+      // location.reload();
     } catch (err) {
       dispatch({
         type: "rejected",

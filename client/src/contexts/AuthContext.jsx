@@ -48,9 +48,9 @@ const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     const user = await handleLogin(email, password);
-    if (user) {
-      dispatch({ type: "login", payload: user });
-    }
+    if (!user) return null;
+    dispatch({ type: "login", payload: user });
+    return user;
   };
 
   const getUser = useCallback(async () => {

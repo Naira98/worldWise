@@ -19,7 +19,7 @@ import { useGeolocation } from "../hooks/useGeolocation";
 const Map = () => {
   const [mapPosition, setMapPosition] = useState([40, 0]);
 
-  const { cities } = useCities();
+  const { cities = [] } = useCities();
   const {
     position: geolocationPosition,
     isLoading: isLoadingGeolocation,

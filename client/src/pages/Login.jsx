@@ -7,14 +7,19 @@ import { useAuth } from "../contexts/AuthContext";
 import Button from "../components/Button";
 
 const Login = () => {
-  const [email, setEmail] = useState("test@test.com");
-  const [password, setPassword] = useState("test");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const { login, isAuth } = useAuth();
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (email && password) login(email, password);
+    if (email && password) {
+      const user = await login(email, password);
+      if (!user) setError("Wrong email or password");
+      console.log(error)
+    }
   };
 
   useEffect(() => {
@@ -47,11 +52,12 @@ const Login = () => {
 
         <div>
           <Button type="primary">Login</Button>
+          {error && <h2 style={{textAlign: "center", color:'#db8080'}}>{error}</h2>}
         </div>
       </form>
       <div className={styles.footer}>
         <span>
-          <strong>Don&apos;t have an account?  </strong>
+          <strong>Don&apos;t have an account? </strong>
         </span>
         <span>
           <Link to="/signup" className={styles.link}>

@@ -10,6 +10,7 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const { signup } = useAuth();
@@ -17,7 +18,11 @@ const Signup = () => {
     e.preventDefault();
     if (email && password && name) {
       const user = await signup(email, password, name);
-      if (user) navigate("/login");
+      if (!user) {
+        setError("Email already exists");
+      } else {
+        navigate("/login");
+      }
     }
   };
 
@@ -57,6 +62,9 @@ const Signup = () => {
 
         <div>
           <Button type="primary">Signup</Button>
+          {error && (
+            <h2 style={{ textAlign: "center", color: "#db8080" }}>{error}</h2>
+          )}
         </div>
       </form>
       <div className={styles.footer}>
