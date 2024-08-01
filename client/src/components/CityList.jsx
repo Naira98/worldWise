@@ -7,7 +7,7 @@ import Message from "./Message";
 import { useCities } from "../contexts/CitiesContext";
 
 const CityList = () => {
-  const { cities, isLoading } = useCities();
+  const { cities = [], isLoading } = useCities();
 
   if (isLoading) return <CircularProgress color="inherit" />;
   if (!cities.length)
@@ -18,7 +18,7 @@ const CityList = () => {
     <ul className={styles.cityList}>
       {cities.length &&
         cities.map((city) => (
-          <li key={city.id}>
+          <li key={city._id}>
             <CityItem city={city} />
           </li>
         ))}
