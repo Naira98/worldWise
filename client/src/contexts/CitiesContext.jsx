@@ -82,9 +82,9 @@ const CitiesProvider = ({ children }) => {
   // const [isLoading, setIsLoading] = useState(false);
   // const [currentCity, setCurrentCity] = useState({});
 
-  const forceRefetch = () => {
+  function forceRefetchCitites() {
     setValue((x) => x + 1);
-  };
+  }
 
   useEffect(() => {
     const fetchCities = async () => {
@@ -138,7 +138,7 @@ const CitiesProvider = ({ children }) => {
       dispatch({ type: "loading" });
       await handleDeleteCity(id);
       dispatch({ type: "city/deleted", payload: id });
-      forceRefetch()
+      forceRefetchCitites();
       // location.reload();
     } catch (err) {
       dispatch({

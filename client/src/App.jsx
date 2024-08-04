@@ -27,6 +27,7 @@ const Login = lazy(() => import("./pages/Login"));
 const PageNotFound = lazy(() => import("./pages/PageNotFound"));
 
 const App = () => {
+
   return (
     <AuthProvider>
       <CitiesProvider>

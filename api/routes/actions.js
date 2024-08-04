@@ -11,7 +11,7 @@ router.get("/cities", verify, async (req, res) => {
       .toArray();
     return res.status(200).json(allCities);
   } catch (err) {
-    return res.status(401).json(err.message);
+    return res.status(500).json(err.message);
   }
 });
 router.get(`/cities/:cityId`, verify, async (req, res) => {
@@ -21,7 +21,7 @@ router.get(`/cities/:cityId`, verify, async (req, res) => {
     if (!city) throw new Error("City not found");
     return res.status(200).json(city);
   } catch (err) {
-    res.status(401).json(err.message);
+    res.status(500).json(err.message);
   }
 });
 router.post("/cities", verify, async (req, res) => {
@@ -34,7 +34,7 @@ router.post("/cities", verify, async (req, res) => {
     });
     return res.status(200).json({ ...newCity, _id: addedCity.insertedId });
   } catch (err) {
-    res.status(401).json(err.message);
+    res.status(500).json(err.message);
   }
 });
 router.delete("/cities/:cityId", verify, async (req, res) => {
@@ -44,7 +44,7 @@ router.delete("/cities/:cityId", verify, async (req, res) => {
     await cities.findOneAndDelete({ _id: new ObjectId(cityId) });
     return res.status(200).json("City deleted successfully");
   } catch (err) {
-    res.status(401).json(err.message);
+    res.status(500).json(err.message);
   }
 });
 
