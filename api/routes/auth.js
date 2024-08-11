@@ -1,14 +1,15 @@
 import express from "express";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import { ObjectId } from "bson";
+
 import { tokens, users } from "../models/collections.js";
 import {
   generateAccessToken,
   generateRefreshToken,
   verify,
 } from "../lib/helpers.js";
-import jwt from "jsonwebtoken";
 import { REFRESH_SECRET } from "../config.js";
-import { ObjectId } from "bson";
 
 const router = express.Router();
 
