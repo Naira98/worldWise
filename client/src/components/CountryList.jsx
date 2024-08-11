@@ -7,8 +7,7 @@ import Message from "./Message";
 import { useCities } from "../contexts/CitiesContext";
 
 const CountryList = () => {
-  const { cities, isLoading } = useCities();
-  
+  const { cities = [], isLoading } = useCities();
   if (isLoading) return <CircularProgress color="inherit" />;
   if (!cities.length)
     return (

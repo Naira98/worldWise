@@ -4,7 +4,6 @@ import {
   useContext,
   useEffect,
   useReducer,
-  useState,
 } from "react";
 import {
   handleAddCity,
@@ -12,8 +11,8 @@ import {
   handleGetCities,
   handleGetCity,
 } from "../lib/actions-services";
+import { useAuth } from "./AuthContext";
 
-// const BASE_URL = "http://localhost:8000";
 
 const CitiesContext = createContext();
 
@@ -77,31 +76,25 @@ const CitiesProvider = ({ children }) => {
     reducer,
     intialState
   );
-  const [value, setValue] = useState(0);
-  // const [cities, setCities] = useState([]);
-  // const [isLoading, setIsLoading] = useState(false);
-  // const [currentCity, setCurrentCity] = useState({});
+  const { isAuth } = useAuth();
 
-  function forceRefetchCitites() {
-    setValue((x) => x + 1);
-  }
+  const fetchCities = useCallback(async () => {
+    try {
+      dispatch({ type: "loading" });
+      const cities = await handleGetCities();
+      dispatch({ type: "cities/loaded", payload: cities });
+    } catch (err) {
+      dispatch({
+        type: "rejected",
+        payload: "There was an error loading cities...",
+      });
+    }
+  }, []);
 
   useEffect(() => {
-    const fetchCities = async () => {
-      try {
-        dispatch({ type: "loading" });
-        const cities = await handleGetCities();
-        dispatch({ type: "cities/loaded", payload: cities });
-        // setCities(data);
-      } catch (err) {
-        dispatch({
-          type: "rejected",
-          payload: "There was an error loading cities...",
-        });
-      }
-    };
+    if (!isAuth) return;
     fetchCities();
-  }, [value]);
+  }, [isAuth, fetchCities]);
 
   const getCity = useCallback(
     async (id) => {
@@ -110,7 +103,6 @@ const CitiesProvider = ({ children }) => {
         dispatch({ type: "loading" });
         const city = await handleGetCity(id);
         dispatch({ type: "city/loaded", payload: city });
-        // setCurrentCity(data);
       } catch (err) {
         dispatch({
           type: "rejected",
@@ -138,8 +130,7 @@ const CitiesProvider = ({ children }) => {
       dispatch({ type: "loading" });
       await handleDeleteCity(id);
       dispatch({ type: "city/deleted", payload: id });
-      forceRefetchCitites();
-      // location.reload();
+      fetchCities();
     } catch (err) {
       dispatch({
         type: "rejected",
