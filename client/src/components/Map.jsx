@@ -17,7 +17,7 @@ import { useCities } from "../contexts/CitiesContext";
 import { useGeolocation } from "../hooks/useGeolocation";
 
 const Map = () => {
-  const [mapPosition, setMapPosition] = useState([40, 0]);
+  const [mapPosition, setMapPosition] = useState([20, 20]);
 
   const { cities = [] } = useCities();
   const {
@@ -43,7 +43,7 @@ const Map = () => {
       </Button>
       <MapContainer
         center={mapPosition}
-        zoom={5}
+        zoom={3}
         scrollWheelZoom={true}
         className={styles.map}
       >
