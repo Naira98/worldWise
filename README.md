@@ -10,4 +10,4 @@
 - React Router Dom
 - Context API
 - memo, useMemo, useCallback
-- React leaflet for map
+- React leaflet for maps
