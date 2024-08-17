@@ -9,7 +9,7 @@ const apiReq = async (method, endpoint, body, headers) => {
     // console.log(decodedToken.exp * 1000);
     // console.log(Date.now());
     // console.log(decodedToken.exp * 1000 >= Date.now());
-    if (decodedToken.exp < Date.now()) {
+    if (decodedToken.exp * 1000 < Date.now()) {
       const res = await fetch("http://localhost:3000/auth/refresh", {
         method: "POST",
         headers: {
