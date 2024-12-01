@@ -9,7 +9,6 @@ export async function handleSignup(email, password, name) {
       },
       body: JSON.stringify({ email, password, name }),
     });
-    // const res = await apiReq("POST", "/auth/signup", { email, password, name });
     if (!res.ok) return null;
     const userData = await res.json();
     return userData;
@@ -20,7 +19,6 @@ export async function handleSignup(email, password, name) {
 
 export async function handleLogin(email, password) {
   try {
-    // const res = await apiReq("POST", "/auth/login", { email, password });
     const res = await fetch("http://localhost:3000/auth/login", {
       method: "POST",
       headers: {

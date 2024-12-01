@@ -9,7 +9,6 @@ const AppLayout = () => {
       <Sidebar />
       <Map />
       <User />
- 
     </div>
   )
 }

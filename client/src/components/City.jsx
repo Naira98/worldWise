@@ -1,9 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { CircularProgress } from "@mui/material";
-
 import styles from "./styles/City.module.css";
-
 import { useCities } from "../contexts/CitiesContext";
 import BackButton from "./BackButton";
 

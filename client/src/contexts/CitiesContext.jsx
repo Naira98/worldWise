@@ -13,10 +13,7 @@ import {
 } from "../lib/actions-services";
 import { useAuth } from "./AuthContext";
 
-
 const CitiesContext = createContext();
-
-// const sleep = (time) => new Promise((fulfill) => setTimeout(fulfill, time));
 
 const intialState = {
   cities: [],
@@ -117,7 +114,6 @@ const CitiesProvider = ({ children }) => {
       dispatch({ type: "loading" });
       const addedCity = await handleAddCity(newCity);
       dispatch({ type: "city/added", payload: addedCity });
-      // setCities((cities) => [...cities, newCity]);
     } catch (err) {
       dispatch({
         type: "rejected",

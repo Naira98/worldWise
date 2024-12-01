@@ -8,10 +8,8 @@ import {
   useMap,
   useMapEvent,
 } from "react-leaflet";
-
 import Button from "./Button";
 import styles from "./styles/Map.module.css";
-
 import useUrlPosition from "../hooks/useUrlPosition";
 import { useCities } from "../contexts/CitiesContext";
 import { useGeolocation } from "../hooks/useGeolocation";

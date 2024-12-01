@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-
 import styles from "./styles/Login.module.css";
 import HomeNav from "../components/HomeNav";
 import { useAuth } from "../contexts/AuthContext";

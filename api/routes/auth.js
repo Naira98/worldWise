@@ -2,7 +2,6 @@ import express from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { ObjectId } from "bson";
-
 import { tokens, users } from "../models/collections.js";
 import {
   generateAccessToken,

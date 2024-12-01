@@ -1,9 +1,7 @@
 import { CircularProgress } from "@mui/material";
-
 import styles from "./styles/CityList.module.css";
 import CityItem from "./CityItem";
 import Message from "./Message";
-
 import { useCities } from "../contexts/CitiesContext";
 
 const CityList = () => {

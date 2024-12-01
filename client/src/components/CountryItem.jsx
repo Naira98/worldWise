@@ -1,4 +1,5 @@
 import styles from "./styles/CountryItem.module.css";
+
 const CountryItem = ({ country }) => {
   return (
     <li className={styles.countryItem}>

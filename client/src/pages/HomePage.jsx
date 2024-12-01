@@ -1,8 +1,8 @@
+import { useEffect } from "react";
 import styles from "./styles/HomePage.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import HomeNav from "../components/HomeNav";
 import { useAuth } from "../contexts/AuthContext";
-import { useEffect } from "react";
 
 const HomePage = () => {
   const navigate = useNavigate();

@@ -1,10 +1,8 @@
-// "https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=0&longitude=0"
 import { useEffect, useState } from "react";
 import { CircularProgress } from "@mui/material";
 import DatePicker from "react-datepicker";
 import styles from "./styles/Form.module.css";
 import "react-datepicker/dist/react-datepicker.css";
-
 import Button from "./Button";
 import BackButton from "./BackButton";
 import useUrlPosition from "../hooks/useUrlPosition";
@@ -107,12 +105,12 @@ function Form() {
 
       <div className={styles.row}>
         <label htmlFor="date">When did you go to {cityName}?</label>
-        <DatePicker
-          id="date"
-          selected={date}
-          onChange={(date) => setDate(date)}
-          dateFormat="dd/MM/yyyy"
-        />
+          <DatePicker
+            id="date"
+            selected={date}
+            onChange={(date) => setDate(date)}
+            dateFormat="dd/MM/yyyy"
+          />
       </div>
 
       <div className={styles.row}>
