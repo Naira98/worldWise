@@ -1,4 +1,4 @@
-import  jwtDecode  from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 import "core-js/stable/atob";
 
 const apiReq = async (method, endpoint, body, headers) => {
